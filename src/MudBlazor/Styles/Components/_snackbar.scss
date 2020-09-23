@@ -13,7 +13,6 @@
     overflow: hidden;
     margin-top: 16px;
     min-width: 288px;
-    max-width: 500px;
     border-radius: var(--mud-theme-border-radius-default);
     box-shadow: 0px 3px 5px -1px rgba(0,0,0,0.2), 0px 6px 10px 0px rgba(0,0,0,0.14), 0px 1px 18px 0px rgba(0,0,0,0.12);
 
@@ -22,19 +21,19 @@
     }
 
     &.mud-snackbar-info {
-        background-color: var(--mud-theme-info);
+        background-color: var(--mud-theme-color-info);
     }
 
     &.mud-snackbar-success {
-        background-color: var(--mud-theme-success);
+        background-color: var(--mud-theme-color-success);
     }
 
     &.mud-snackbar-warning {
-        background-color: var(--mud-theme-warning);
+        background-color: var(--mud-theme-color-warning);
     }
 
     &.mud-snackbar-error {
-        background-color: var(--mud-theme-danger);
+        background-color: var(--mud-theme-color-danger);
     }
 
     .mud-snackbar-content-message {
@@ -63,9 +62,9 @@
         }
 
         &-center {
-            top: 24px;
-            left: 50%;
-            transform: translateX(-50%);
+            top: 0;
+            right: 0;
+            width: 100%
         }
 
         &-right {
@@ -82,9 +81,9 @@
         }
 
         &-center {
-            bottom: 24px;
-            left: 50%;
-            transform: translateX(-50%);
+            bottom: 0;
+            right: 0;
+            width: 100%
         }
 
         &-left {

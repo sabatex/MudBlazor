@@ -4,12 +4,12 @@
 @inherits MudComponentBase
 @implements IDisposable
 
-
 <aside @attributes="UserAttributes" class="@Classname" style="@Style">
     <CascadingValue Value="this" IsFixed="true">
         @ChildContent
     </CascadingValue>
 </aside>
+<MudOverlay OnClick="@DrawerClose" Class="@OverlayClass" />
 
 
 @code {
@@ -19,10 +19,18 @@
       .AddClass($"mud-drawer-anchor-{Anchor.ToDescriptionString()}")
       .AddClass($"mud-drawer--open", Open)
       .AddClass($"mud-drawer--closed", !Open)
+      .AddClass($"mud-drawer--initial", _initial)
       .AddClass($"mud-drawer-clipped", Clipped)
       .AddClass($"mud-drawer-color-{Color.ToDescriptionString()}", Color != Color.Default)
       .AddClass($"mud-elevation-{Elevation.ToString()}")
       .AddClass(Class)
+    .Build();
+
+    protected string OverlayClass =>
+    new CssBuilder("mud-drawer-overlay")
+      .AddClass($"mud-drawer-anchor-{Anchor.ToDescriptionString()}")
+      .AddClass($"mud-drawer--open", !Open)
+      .AddClass($"mud-drawer--initial", _initial)
     .Build();
 
     /// <summary>
@@ -57,15 +65,18 @@
             if (_open == value)
                 return;
             _open = value;
+            _initial = false;
             Layout?.FireDrawersChanged();
             StateHasChanged();
         }
     }
 
-    [Parameter] public EventCallback<bool> OpenChanged { get; set;}
+    [Parameter] public EventCallback<bool> OpenChanged { get; set; }
+
 
     private bool _open;
     private bool _clipped;
+    private bool _initial = true;
 
     [Parameter]
     public bool Clipped
@@ -90,7 +101,6 @@
         Layout?.Add(this);
     }
 
-
     public void Dispose()
     {
         try
@@ -100,5 +110,15 @@
         catch (Exception) {}
     }
 
-
+    private void DrawerClose()
+    {
+        if (Open)
+        {
+            OpenChanged.InvokeAsync(false);
+        }
+        else
+        {
+            OpenChanged.InvokeAsync(true);
+        }
+    }
 }

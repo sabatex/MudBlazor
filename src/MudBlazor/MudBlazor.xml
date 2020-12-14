@@ -146,10 +146,21 @@
              Will adjust vertical spacing. 
             </summary>
         </member>
+        <member name="P:MudBlazor.MudBaseInput`1.AutoFocus">
+            <summary>
+            If true the input will focus automatically
+            </summary>
+        </member>
         <member name="P:MudBlazor.MudBaseInput`1.Lines">
             <summary>
              A multiline input (textarea) will be shown, if set to more than one line.
             </summary>
+        </member>
+        <member name="M:MudBlazor.MudBaseInput`1.FocusAsync">
+            <summary>
+            Focuses the element
+            </summary>
+            <returns>The ValueTask</returns>
         </member>
         <member name="M:MudBlazor.MudBaseInput`1.StringValueChanged(System.String)">
             <summary>
@@ -203,6 +214,11 @@
         <member name="P:MudBlazor.MudBaseInput`1.EditContext">
             <summary>
             This is the form validation context for Blazor's <EditForm></EditForm> component
+            </summary>
+        </member>
+        <member name="M:MudBlazor.MudBaseInput`1.EditFormValidate">
+            <summary>
+            Triggers field to be validated.
             </summary>
         </member>
         <member name="P:MudBlazor.MudBaseInput`1.For">
@@ -1487,6 +1503,21 @@
             Icon to use if set.
             </summary>
         </member>
+        <member name="P:MudBlazor.MudOverlay.ChildContent">
+            <summary>
+            Child content of the component.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.MudOverlay.CommandParameter">
+            <summary>
+            Command parameter.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.MudOverlay.Command">
+            <summary>
+            Command executed when the user clicks on an element.
+            </summary>
+        </member>
         <member name="P:MudBlazor.MudPopover.Elevation">
             <summary>
             The higher the number, the heavier the drop-shadow. 0 for no shadow set to 8 by default.
@@ -1909,6 +1940,26 @@
         <member name="P:MudBlazor.MudTableBase.PagerContent">
             <summary>
             Add MudTablePager here to enable breaking the rows in to multiple pages.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.MudTableBase.OnCommitEditClick">
+            <summary>
+            Button click event.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.MudTableBase.CommitEditCommand">
+            <summary>
+            Command executed when the user clicks on the CommitEdit Button.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.MudTableBase.CommitEditCommandParameter">
+            <summary>
+            Command parameter for the CommitEdit Button.
+            </summary>
+        </member>
+        <member name="P:MudBlazor.MudTableBase.CommitEditTooltip">
+            <summary>
+            Tooltip for the CommitEdit Button.
             </summary>
         </member>
         <member name="P:MudBlazor.MudTablePager.DisableRowsPerPage">

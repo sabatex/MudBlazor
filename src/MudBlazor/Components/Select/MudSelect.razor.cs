@@ -73,6 +73,8 @@ namespace MudBlazor
 
         private Func<T, string> _toStringFunc = x => x?.ToString();
 
+        private MudInput<string> _elementReference;
+
         [Parameter]
         public Func<T, string> ToStringFunc
         {
@@ -113,6 +115,16 @@ namespace MudBlazor
                 if (!_value_lookup.TryGetValue(Value, out var item))
                     return false;
                 return (item.ChildContent != null);
+            }
+        }
+
+        protected bool IsValueInList
+        {
+            get
+            {
+                if (Value == null)
+                    return false;
+                return _value_lookup.TryGetValue(Value, out var item);
             }
         }
 
@@ -179,6 +191,13 @@ namespace MudBlazor
         [Parameter] public bool OffsetY { get; set; }
 
         [Parameter] public bool OffsetX { get; set; }
+
+        /// <summary>
+        /// If true, the select's input will not show any values that are not defined in the dropdown.
+        /// This can be useful if Value is bound to a variable which is initialized to a value which is not in the list
+        /// and you want the select to show the label / placeholder instead.
+        /// </summary>
+        [Parameter] public bool Strict { get; set; }
 
         internal bool isOpen { get; set; }
 
@@ -254,6 +273,10 @@ namespace MudBlazor
                 throw new GenericTypeMismatchException("MudSelect", "MudSelectItem", typeof(T), itemT);
         }
 
+        public override ValueTask FocusAsync()
+        {
+            return _elementReference.FocusAsync();
+        }
     }
 
 }

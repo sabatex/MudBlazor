@@ -14,7 +14,6 @@ namespace MudBlazor
           .AddClass($"mud-button-{Variant.ToDescriptionString()}")
           .AddClass($"mud-button-{Variant.ToDescriptionString()}-{Color.ToDescriptionString()}")
           .AddClass($"mud-button-{Variant.ToDescriptionString()}-size-{Size.ToDescriptionString()}")
-          .AddClass($"mud-ripple", !DisableRipple)
           .AddClass($"mud-button-disable-elevation", DisableElevation)
           .AddClass(Class)
         .Build();
@@ -40,6 +39,11 @@ namespace MudBlazor
         /// Icon placed before the text if set.
         /// </summary>
         [Parameter] public string EndIcon { get; set; }
+
+        /// <summary>
+        /// The color of the icon. It supports the theme colors.
+        /// </summary>
+        [Parameter] public Color IconColor { get; set; } = Color.Inherit;
 
         /// <summary>
         /// Icon class names, separated by space

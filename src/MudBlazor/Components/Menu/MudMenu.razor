@@ -30,8 +30,5 @@
     </CascadingValue>
 </div>
 
+<MudOverlay Visible="isOpen" OnClick="@ToggleMenu" />
 
-@if (isOpen)
-{
-    <div class="mud-popover-overlay" @onclick="@ToggleMenu"></div>
-}

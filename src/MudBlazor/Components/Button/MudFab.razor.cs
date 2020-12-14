@@ -14,7 +14,6 @@ namespace MudBlazor
           .AddClass($"mud-fab-extended", !String.IsNullOrEmpty(Label))
           .AddClass($"mud-fab-{Color.ToDescriptionString()}")
           .AddClass($"mud-fab-size-{Size.ToDescriptionString()}")
-          .AddClass($"mud-ripple", !DisableRipple && !Disabled)
           .AddClass($"mud-fab-disable-elevation", DisableElevation)
           .AddClass(Class)
         .Build();
@@ -33,6 +32,11 @@ namespace MudBlazor
         /// If applied Icon will be added to the component.
         /// </summary>
         [Parameter] public string Icon { get; set; }
+
+        /// <summary>
+        /// The color of the icon. It supports the theme colors.
+        /// </summary>
+        [Parameter] public Color IconColor { get; set; } = Color.Inherit;
 
         /// <summary>
         /// If applied the text will be added to the component.
